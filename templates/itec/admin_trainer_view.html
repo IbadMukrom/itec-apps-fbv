@@ -1,0 +1,65 @@
+{% extends "itec/admin_base.html" %}
+{% block content %}
+<br><br><br>
+
+
+
+<head>
+
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+    h6{
+      text-align:center;
+    }
+    .row{
+      margin:10px;
+    }
+    
+  </style>
+
+</head>
+
+
+<div class="container">
+    	<div class="row" >
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+                        <h6 class="panel-title">Trainer</h6>                        
+                    </div>
+                    <br>
+                    <table class="table table-hover table-striped table-bordered">
+                        <tr>
+                            <th width="">No.</th>
+                            <th width="10%">Nama</th>
+                            <th width="30%">Username</th>
+                            <th width="30%">Kelamin</th>
+                            <th width="20%">Tempat/Tanggal Lahir</th>
+                            <th width="10%">Pendidikan Terakhir</th>
+                            <th width="10%">Nomor HP</th>
+                            <th width="10%">Alamat</th>
+                            <th>
+                              <a style="float: right;" href="{% url 'admin-tambah-trainer' %}" class="btn btn-success btn-sm">Tambah Data</a>
+                            </th>
+                        </tr>
+                        {% for trainer in trainers %}
+                            <tr>
+                                <td>{{forloop.counter}}.</td>
+                                <td>{{trainer.nama_trainer}}</td>
+                                <td>{{trainer.user.username}}</td>
+                                <td>{{trainer.kelamin}}</td>
+                                <td>{{trainer.tempat_lahir}}, {{trainer.tgl_lahir}}</td>
+                                <td>{{trainer.pendidikan_terakhir}}</td>
+                                <td>{{trainer.nomor_handphone}}</td>
+                                <td>{{trainer.alamat}}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>      
+        </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,69 @@
+
+{% extends "itec/admin_base.html" %}
+
+{% block content %}
+<br><br>
+
+<head>
+
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+    h6{
+      text-align:center;
+    }
+    .row{
+      margin:2px;
+    }
+
+  </style>
+
+</head>
+
+
+<div class="container">
+    	<div class="row" >
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+                        <h6 class="panel-title">Peserta</h6>                        
+                    </div>
+                    <br>
+                    <table class="table table-hover table-striped table-bordered">
+                        <tr>
+                            <th width="100">No.</th>
+                            <th width="500">Nama</th>
+                            <th width="300">Username</th>
+                            <th width="100">Kelamin</th>
+                            <th width="500">Tempat/Tanggal Lahir</th>
+                            <th width="100">Pendidikan Terakhir</th>
+                            <th width="100">Nomor HP</th>
+                            <th width="100">Alamat</th>
+                            <th>
+                              <a style="float: right;" href="{% url 'admin-tambah-peserta' %}" class="btn btn-success btn-sm">Tambah Data</a>
+                            </th>
+                        </tr>
+                        {% for peserta in pesertas %}
+                            <tr>
+                                <td>{{forloop.counter}}.</td>
+                                <td>{{peserta.nama_peserta}}</td>
+                                <td>{{peserta.user.username}}</td>
+                                <td>{{peserta.kelamin}}</td>
+                                <td>{{peserta.tempat_lahir}}, {{peserta.tgl_lahir}}</td>
+                                <td>{{peserta.pendidikan_terakhir}}</td>
+                                <td>{{peserta.nomor_handphone}}</td>
+                                <td>{{peserta.alamat}}</td>
+                                <td>
+                              <a style="float: right;" href="{% url 'admin-tambah-pendaftar' peserta.id %}" class="btn btn-primary btn-sm">Tambah Ke Pendaftar</a>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>      
+        </div>
+</div>
+
+{% endblock content %}

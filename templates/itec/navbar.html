@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .bs-example {
+          margin: 0px;
+    
+        }
+    
+        .navbar-brand {
+          font-size: 30px;
+          font-family: sans-serif;
+    
+        }
+        .nav-item{
+          font-size: 25px;
+          font-family: 'Times New Roman', Times, serif;
+        }
+      </style>
+    
+</head>
+<body>
+    
+    <div class="bs-example">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: black;">
+            <a href="/" class="navbar-brand">ITEC Apps</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav">
+        
+                  <a href="{% url 'admin-click' %}" class="nav-item nav-link">Admin</a>
+                  <a href="/trainer_click" class="nav-item nav-link">Trainer</a>
+                  <a href="/peserta_click" class="nav-item nav-link">Peserta</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

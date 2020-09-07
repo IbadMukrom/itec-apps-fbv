@@ -1,0 +1,83 @@
+
+{% extends 'itec/admin_base.html' %}
+
+{% block content %}
+<br><br><br>
+
+
+<head>
+
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+    h6{
+      text-align:center;
+    }
+    .row{
+      margin:10px;
+    }
+    .panel{
+        margin-left: 10px;
+        font-size: 15px;
+    }
+  </style>
+
+</head>
+
+
+<div class="container">
+    	<div class="row" >
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+                        <h6 class="panel-title">Kelas</h6>                        
+                    </div>
+                    <br>
+                    <table class="table table-hover table-striped table-bordered">
+                        <tr>
+                            <th width="100">No.</th>
+                            <th width="500">Nama Kelas</th>
+                            <th width="500">Peserta</th>
+                            <th width="500">Program</th>
+                            <th width="300">Trainer</th>
+                            <th width="100">Aktif</th>
+                            <th width="300">Tanggal Mulai</th>
+                            <th width="300">Tanggal Berakhir</th>
+                            <th width="200">Keterangan</th>
+                            <th width="100">
+                            <a style="float: center;" href="{% url 'admin-tambah-kelas' %}" class="btn btn-success btn-sm btn-block">Tambah Data</a>
+                            </th>
+
+                        </tr>
+                        {% for k in kelas %}
+                            <tr>
+                                <td>{{forloop.counter}}.</td>
+                                <td>{{k.nama_kelas}}</td>
+                                <td>
+                                    {% for peserta in k.pendaftaran.all %}
+                                        {{ peserta.peserta }},
+                                    {% endfor %}
+                                </td>
+                                <td>{{ k.program.nama_program }}</td>
+                                <td>
+                                    {% for trainer in k.trainer.all %}
+                                        {{ trainer.nama_trainer }},
+                                    {% endfor %}
+                                </td>
+                                {% if k.is_active %}
+                                <td>Iya</td>
+                                {% else %}
+                                <td>Tidak</td>
+                                {% endif%}
+                                <td>{{k.tgl_mulai}}</>
+                                <td>{{k.tgl_berakhir}}</td>
+                                <td>{{k.keterangan}}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+            </div>
+		</div>
+</div>
+{% endblock content %}

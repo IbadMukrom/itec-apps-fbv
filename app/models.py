@@ -19,7 +19,7 @@ class Peserta(models.Model):
     pendidikan_terakhir = models.CharField(max_length=100, null=True, blank=True)
     alamat = models.CharField(max_length=100, null=False, blank=False)
     alasan_kursus = models.CharField(max_length=100, null=False, blank=False)
-    is_peserta = models.BooleanField(default=False)
+
     class Meta:
         verbose_name = 'Form Peserta'
         verbose_name_plural = 'Data Peserta'
@@ -47,7 +47,6 @@ class Trainer(models.Model):
     sosmed = models.CharField(max_length=50, null=True, blank=True)
     pendidikan_terakhir = models.CharField(max_length=50, null=True, blank=True)
     alamat = models.CharField(max_length=50, null=True, blank=True)
-    is_trainer = models.BooleanField(default=False)
     
     class Meta:
         verbose_name = 'Form Trainer'
@@ -62,10 +61,13 @@ class Pendaftaran(models.Model):
     is_register = models.BooleanField(default=True) # True = belum punya kelas
     keterangan = models.TextField(max_length=100, blank=False, null=False)
 
+    def __str__(self):
+        return self.peserta.nama_peserta
+    
 class Kelas(models.Model):
     nama_kelas = models.CharField(max_length=50, null=False, blank=False)
     pendaftaran = models.ManyToManyField(Pendaftaran)
-    program = models.ForeignKey(Program,  on_delete=models.SET_NULL, blank=True, null=True)
+    program = models.ForeignKey(Program, on_delete=models.SET_NULL, blank=True, null=True)
     trainer = models.ManyToManyField(Trainer)
     is_active = models.BooleanField(default=True)
     tgl_mulai = models.DateField(blank=True, null=True)

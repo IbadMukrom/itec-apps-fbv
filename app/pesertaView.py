@@ -42,6 +42,7 @@ def is_peserta(user):
 def is_trainer(user):
     return user.groups.filter(name='trainer').exists()
 
+@transaction.atomic
 def peserta_signup(request):
     form = FormPeserta()
     if request.method == 'POST':
@@ -67,6 +68,8 @@ def peserta_signup(request):
             return redirect('peserta_click')
     return render (request, 'itec/peserta_signup.html',{'form':form})
 
+@login_required(login_url='peserta-lgoin')
+@user_passes_test(is_peserta)
 def peserta_dashboard(request):    
     data = {
         'kelas':Kelas.objects.all().filter(pendaftaran__peserta=request.user.peserta.id),
@@ -74,6 +77,8 @@ def peserta_dashboard(request):
     }
     return render(request,'itec/peserta_dashboard.html', context=data)
 
+@login_required(login_url='peserta-lgoin')
+@user_passes_test(is_peserta)
 def lihat_program(request):
     progam = Program.objects.all()
     return render (request, 'itec/peserta_program.html', {'program':progam})

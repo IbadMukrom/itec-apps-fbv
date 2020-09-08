@@ -41,6 +41,7 @@ def after_login_view(request):
     elif is_peserta(request.user):
         return redirect('peserta-dashboard')
 
+
 @transaction.atomic
 def trainer_signup(request):
     form = TrainerForm()
@@ -61,6 +62,8 @@ def trainer_signup(request):
             return redirect('trainer_click')
     return render(request, 'itec/trainer_signup.html', {'form':form}) 
 
+@login_required(login_url='trainer-login')
+@user_passes_test(is_trainer)
 def trainer_dashboard(request):
     kelas = Kelas.objects.filter(trainer=request.user.trainer.id)
     trainer = Trainer.objects.get(user_id=request.user.id)

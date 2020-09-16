@@ -148,7 +148,7 @@
       <h3>ITEC Apps</h3>
     </div>
     <div class="right_area">
-			<a class="logout_btn" href="logout">Keluar</a>
+			<a class="logout_btn" href="{% url 'logout' %}">Keluar</a>
     </div>
   </header>
   <!--header area end-->
@@ -162,8 +162,9 @@
 
     </center>
 
-	<a  href="peserta-dashboard"> <i class=" fa fa-chart-line"></i> <span>Kelas Anda</span> </a>
+	<a  href="{% url 'peserta-dashboard' %}"> <i class=" fa fa-chart-line"></i> <span>Kelas Anda</span> </a>
 	<a  href="{% url 'lihat-program' %}"><i class=" fa fa-address-card"></i> <span>Lihat semua program</span> </a>
+	<a  href="{% url 'peserta-tambah-program' user.peserta.id  %}"><i class=" fa fa-address-card"></i> <span>tambah program</span> </a>
   
 	
   </div>

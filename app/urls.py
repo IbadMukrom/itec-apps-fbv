@@ -10,7 +10,7 @@ urlpatterns = [
 
     path('afterlogin', views.after_login_view, name='after-login'),
     path('adminlogin', LoginView.as_view(template_name='itec/adminlogin.html'),name='adminlogin'),
-    path('logout', LogoutView.as_view(template_name='itec/index.html')),
+    path('logout', LogoutView.as_view(template_name='itec/index.html'), name='logout'),
     path('admin-dashboard', views.admin_dashboard, name='admin-dashboard'),
     path('admin-trainer-view', views.admin_trainer_view, name='admin-trainer-view' ),
     path('admin-tambah-trainer', views.admin_tambah_trainer, name='admin-tambah-trainer'),

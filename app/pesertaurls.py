@@ -9,4 +9,5 @@ urlpatterns = [
     path('after-login', pesertaView.after_login_view, name='after-login'),
     path('peserta-dashboard', pesertaView.peserta_dashboard, name='peserta-dashboard'),
     path('peserta-program', pesertaView.lihat_program, name='lihat-program'),
+    path('peserta-add-program/<int:id>', pesertaView.tambah_program, name='peserta-tambah-program'),
 ]

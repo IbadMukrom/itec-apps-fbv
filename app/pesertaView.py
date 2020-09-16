@@ -82,3 +82,22 @@ def peserta_dashboard(request):
 def lihat_program(request):
     progam = Program.objects.all()
     return render (request, 'itec/peserta_program.html', {'program':progam})
+
+
+@login_required(login_url='peserta-login')
+@user_passes_test(is_peserta)
+def tambah_program(request, id):
+    form = TambahPendaftaranForm()
+    if request.method == 'POST':
+        form = TambahPendaftaranForm(request.POST)
+        if form.is_valid():
+            peserta = Peserta.objects.get(id=id)
+            program = Program.objects.get(id=int(request.POST['program']))
+            pendaftaran = Pendaftaran()
+            pendaftaran.peserta = peserta
+            pendaftaran.program = program
+            pendaftaran.keterangan = request.POST['keterangan']
+            pendaftaran.save()
+            return redirect('peserta-dashboard')
+
+    return render(request, 'itec/peserta_add_program.html', {'form':form})

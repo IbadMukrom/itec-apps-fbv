@@ -1,0 +1,1 @@
+web: gunicorn itec.wsgi --log-file -

@@ -1,4 +1,4 @@
-#!/home/yahiko/Documents/proyeku/django-itec-fbv/env/bin/python
+#!/home/yahiko/Documents/proyeku/django-itec-fbv/env/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

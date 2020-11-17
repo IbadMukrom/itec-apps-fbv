@@ -1,9 +1,16 @@
 asgiref==3.2.10
+<<<<<<< HEAD:requirements.txt
 dj-static==0.0.6
+=======
+dj-database-url==0.5.0
+>>>>>>> 7bb5374243ab80de24834640f8194d46e77047d9:requirement.txt
 Django==3.1
 django-widget-tweaks==1.4.8
 gunicorn==20.0.4
 pytz==2020.1
 sqlparse==0.3.1
+<<<<<<< HEAD:requirements.txt
 static3==0.7.0
+=======
+>>>>>>> 7bb5374243ab80de24834640f8194d46e77047d9:requirement.txt
 whitenoise==5.2.0
